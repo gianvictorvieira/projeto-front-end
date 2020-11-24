@@ -41,14 +41,20 @@ class Cliente {
             `<tr>
                 <td>${cliente.codigo}</td>    
                 <td>${cliente.nome}</td>
-                <td>${cliente.cep}</td>       
+                <td>${cliente.rg}</td>       
                 <td>${cliente.endereco}</td>
                 <td>${cliente.bairro}</td>    
                 <td>${cliente.cidade}</td>
+                <td>${cliente.cep}</td>
+                <td>${cliente.uf}</td>
+                <td>${cliente.telefone}</td>
+                <td>${cliente.celular}</td>
+                <td>${cliente.cpf}</td>
+                <td>${cliente.fantasia}</td>
+                <td>${cliente.contato}</td>
+                <td>${cliente.email}</td>
+                <td>${cliente.nascimento}</td>
                 <td>${cliente.observacoes}</td>
-                <td>${cliente.limite}</td>
-                <td>${cliente.utilizado}</td>
-                <td>${cliente.saldo}</td>
                 <td>
                     <button id='apagar' onClick='cliente.apaga(${cliente.codigo})'>
                     🗑️Apagar</button>
@@ -62,15 +68,20 @@ class Cliente {
         <thead>
             <th>Código</th>      
             <th>Nome</th>
-            <th>CEP</th>         
+            <th>RG</th>         
             <th>Endereço</th>
             <th>Bairro</th>      
             <th>Cidade</th>
-            <th>Observações</th> 
-            <th>Limite</th>
-            <th>Utilizado</th>
-            <th>Saldo</th>
-            <th>Opções</th>
+            <th>CEP</th> 
+            <th>UF</th>
+            <th>Telefone</th>
+            <th>Celular</th>
+            <th>CPF/CNPJ</th>
+            <th>Nome Fantasia</th>
+            <th>Contato</th>
+            <th>E-mail Pessoal</th>
+            <th>Nascimento</th>
+            <th>Observações</th>
         </thead>
         <tbody>${listagem}</tbody>
         </table>    
@@ -91,10 +102,16 @@ document.getElementById('salvar').onclick = function () {
         endereco: document.getElementById('endereco').value,
         bairro: document.getElementById('bairro').value,
         cidade: document.getElementById('cidade').value,
-        observacoes: document.getElementById('observacoes').value,
-        limite: document.getElementById('limite').value,
-        utilizado: document.getElementById('utilizado').value,
-        saldo: document.getElementById('saldo').value
+        cpf: document.getElementById('cpf').value,
+        uf: document.getElementById('uf').value,
+        celular: document.getElementById('celular').value,
+        telefone: document.getElementById('telefone').value,
+        nascimento: document.getElementById('nascimento').value,
+        email: document.getElementById('email').value,
+        contato: document.getElementById('contato').value,
+        fantasia: document.getElementById('fantasia').value,
+        rg: document.getElementById('rg').value,
+        observacoes: document.getElementById('observacoes').value
     }
     cliente.salva(registro)
 
@@ -102,16 +119,4 @@ document.getElementById('salvar').onclick = function () {
 //tratamos a listagem
 window.onload = function () {
     cliente.atualiza()
-}
-//Tratamos a alteração no campo utlizado
-document.getElementById('utilizado').onchange = function () {
-    let limite = document.getElementById('limite').value
-    let utilizado = document.getElementById('utilizado').value
-    if (parseFloat(utilizado) > parseFloat(limite)) {
-        alert(`O valor utilizado não pode ser maior que o limite de crédito`)
-        document.getElementById('utilizado').valor = 0
-    } else {
-        saldo = (limite - utilizado)
-    }
-    document.getElementById('saldo').value = saldo.toFixed(2)
 }
