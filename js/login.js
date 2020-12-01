@@ -9,7 +9,7 @@ function logar() {
 
         alert("Usuario autenticado!")
 
-        window.location.href = "index.html";
+        window.location.href = "produtos.html";
     } else {
         alert("Usuario ou senha invalidos");
     }
